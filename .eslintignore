@@ -3,6 +3,7 @@ build
 coverage
 node_modules*
 package-lock.json
+*.config.js
 
 # Ignore all HTML files:
 *.html
