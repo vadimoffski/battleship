@@ -1,0 +1,50 @@
+.button {
+  @apply rounded-2xl bg-slate-400 px-20 py-5 text-4xl text-white shadow-md shadow-[#8782bc] duration-300 ease-in-out;
+
+  border: 2px solid rgba(239, 230, 255, 0.9);
+  background: radial-gradient(
+    231% 135.8% at 0.9% 2.98%,
+    rgba(157, 151, 205, 0.5) 0%,
+    rgba(180, 175, 227, 0.5) 100%
+  ) !important;
+
+  &:hover {
+    background: radial-gradient(
+      231% 135.8% at 0.9% 2.98%,
+      #77699f 0%,
+      #947ab3 52.4%,
+      #a988c3 70.1%,
+      #b991ce 80.52%,
+      #dba6e7 95.62%
+    ) !important;
+    box-shadow:
+      0px 0px 14px 0px #dfbfee,
+      0px 0px 16px 0px #dfbfee,
+      0px 0px 25px 0px #dfbfee;
+  }
+
+  &:active {
+    background: radial-gradient(
+      231% 135.8% at 0.9% 2.98%,
+      #77699f 0%,
+      #947ab3 52.4%,
+      #a988c3 70.1%,
+      #b991ce 80.52%,
+      #dba6e7 95.62%
+    ) !important;
+    box-shadow: 0px 3px 10px 0px #5c5678 inset;
+  }
+
+  &:disabled,
+  &[disabled] {
+    border: 2px solid rgba(239, 230, 255, 0.9);
+    background: radial-gradient(
+      231% 135.8% at 0.9% 2.98%,
+      rgba(255, 255, 255, 0.3) 0%,
+      rgba(255, 255, 255, 0.2) 100%
+    ) !important;
+    box-shadow: 1px 1px 5px 0px #8782bc;
+    color: rgba(255, 255, 255, 0.2);
+    cursor: not-allowed;
+  }
+}
