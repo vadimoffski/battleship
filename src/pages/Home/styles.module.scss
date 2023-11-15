@@ -1,0 +1,6 @@
+.main {
+  background: url('/public/img/start-page-bg.png');
+  @apply min-h-screen bg-no-repeat bg-center bg-cover;
+  @apply flex justify-center items-end;
+  @apply pb-20;
+}
