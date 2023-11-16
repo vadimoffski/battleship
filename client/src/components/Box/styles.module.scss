@@ -8,16 +8,4 @@
   box-shadow:
     0px 0px 25.085px 0px #847cab,
     0px 0px 43.898px 0px #847cab;
-
-  &_title {
-    @apply mb-32 text-6xl tracking-widest text-white;
-  }
-
-  &_interactive {
-    @apply relative  flex flex-col justify-center gap-12 pb-14;
-  }
-
-  &_error {
-    @apply absolute bottom-0 left-0 w-full text-center text-2xl font-normal text-[#FDBBFF];
-  }
 }

@@ -1,11 +1,21 @@
-import { ChangeEvent, FocusEvent, FormEvent, useRef, useState } from 'react';
+import {
+  ChangeEvent,
+  FC,
+  FocusEvent,
+  FormEvent,
+  useRef,
+  useState,
+} from 'react';
 
 import Field from '@components/Field';
 import Button from '@components/Button';
+import Box from '@components/Box';
 
 import styles from './styles.module.scss';
 
-const WelcomeForm = ({ onSubmit }: { onSubmit: (name: string) => void }) => {
+type WelcomeFormProps = { onSubmit: (name: string) => void };
+
+const WelcomeForm: FC<WelcomeFormProps> = ({ onSubmit }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const [name, setName] = useState<string>('');
   const [error, setError] = useState<boolean>(false);
@@ -32,10 +42,9 @@ const WelcomeForm = ({ onSubmit }: { onSubmit: (name: string) => void }) => {
 
   return (
     <form onSubmit={handleNext}>
-      <div className={styles.box}>
-        <h2 className={styles.box_title}>Welcome comrade!</h2>
-
-        <div className={styles.box_interactive}>
+      <Box>
+        <h2 className={styles.welcome_title}>Welcome comrade!</h2>
+        <div className={styles.welcome_interactive}>
           <Field
             ref={inputRef}
             value={name}
@@ -48,12 +57,12 @@ const WelcomeForm = ({ onSubmit }: { onSubmit: (name: string) => void }) => {
           />
           <Button name="Next" disabled={error || !name.length} type="submit" />
           {error && (
-            <p className={styles.box_error}>
+            <p className={styles.welcome_error}>
               Please enter 3 to 10 alphabetic characters.
             </p>
           )}
         </div>
-      </div>
+      </Box>
     </form>
   );
 };

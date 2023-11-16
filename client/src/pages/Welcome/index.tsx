@@ -1,11 +1,16 @@
+import { v4 as idv4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
+
 import WelcomeForm from '@components/forms/WelcomeForm';
 
 import styles from './styles.module.scss';
 
 const Welcome = () => {
+  const navigate = useNavigate();
+  const newGameRoomId = idv4();
+
   const handleNext = (name: string) => {
-    // rest of your code
-    console.log(name);
+    navigate(`/${newGameRoomId}`, { state: { userName: name } });
   };
 
   return (

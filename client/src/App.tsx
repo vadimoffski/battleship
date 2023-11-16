@@ -13,8 +13,7 @@ import '@utils/styles/index.scss';
 const ROUTES = {
   home: '/',
   welcome: 'welcome',
-  join: 'join',
-  board: ':id',
+  board: ':gameId',
 } as const;
 
 const App = () => {
