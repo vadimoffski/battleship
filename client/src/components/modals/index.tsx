@@ -1,5 +1,7 @@
-import UserNameModal from './UserNameModal';
+import loadable from '@loadable/component';
+
+const LazyConnectModal = loadable(() => import('./ConnectModal'));
 
 export default {
-  USER_NAME_MODAL: UserNameModal,
+  CONNECT_MODAL: LazyConnectModal,
 };

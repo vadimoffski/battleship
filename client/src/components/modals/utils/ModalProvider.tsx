@@ -1,35 +1,17 @@
-import React, { useState, useContext, FunctionComponent } from 'react';
+import { useState, FunctionComponent, FC } from 'react';
+import { TModals } from '@utils/types';
 
-export interface Modals {
-  addModal(key: string, modal: FunctionComponent<any>): void;
-  openModal(key: string, props?: { [key: string]: any }): void;
-  closeModal(key?: string): void;
-}
+import { ModalsContext } from './ModalsContext';
 
-const initialState: Modals = {
-  closeModal: () => {
-    throw new Error('Not implemented');
-  },
-  openModal: () => {
-    throw new Error('Not implemented');
-  },
-  addModal: () => {
-    throw new Error('Not implemented');
-  },
-};
-
-export const ModalsContext = React.createContext(initialState);
-export const useModals = () => useContext(ModalsContext);
-
-interface Props {
+interface ModalsProviderProps {
   children: JSX.Element | JSX.Element[];
   initialModals?: { [key: string]: FunctionComponent<any> };
 }
 
-export const ModalsProvider: React.FC<Props> = ({
+export const ModalsProvider: FC<ModalsProviderProps> = ({
   children,
   initialModals = {},
-}: Props) => {
+}) => {
   const [modals, setModals] = useState<{
     [key: string]: FunctionComponent<any>;
   }>(initialModals);
@@ -41,11 +23,11 @@ export const ModalsProvider: React.FC<Props> = ({
     }[]
   >([]);
 
-  const addModal: Modals['addModal'] = (key, ModalComponent) => {
+  const addModal: TModals['addModal'] = (key, ModalComponent) => {
     setModals((state) => ({ ...state, [key]: ModalComponent }));
   };
 
-  const openModal: Modals['openModal'] = (key, props = {}) => {
+  const openModal: TModals['openModal'] = (key, props = {}) => {
     if (modal.find((el) => el.key === key)) return;
     setModal((state) => [
       ...state,
@@ -57,7 +39,7 @@ export const ModalsProvider: React.FC<Props> = ({
     ]);
   };
 
-  const closeModal: Modals['closeModal'] = (key?: string) => {
+  const closeModal: TModals['closeModal'] = (key?: string) => {
     if (key === undefined) {
       setModal([]);
     } else {

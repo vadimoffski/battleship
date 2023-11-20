@@ -20,7 +20,11 @@ const io = new Server<
   TYPES.ServerToClientEvents,
   TYPES.InterServerEvents,
   TYPES.SocketData
->(httpServer, {});
+>(httpServer, {
+  cors: {
+    origin: `*`,
+  },
+});
 
 io.on("connection", (client: Socket) => {
   console.log("Connected to the socket.io!");

@@ -1,6 +1,5 @@
 .main {
-  background: url('/img/start-page-bg.png');
-  @apply min-h-screen bg-no-repeat bg-center bg-cover;
-  @apply flex justify-center items-end;
+  @apply min-h-screen bg-[url('../../assets/img/start-page-bg.png')] bg-cover bg-center  bg-no-repeat;
+  @apply flex items-end justify-center;
   @apply pb-20;
 }

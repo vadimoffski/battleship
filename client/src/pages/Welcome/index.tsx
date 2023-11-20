@@ -1,5 +1,8 @@
-import { v4 as idv4 } from 'uuid';
+import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { v4 as idv4 } from 'uuid';
+
+import * as METHOD from '@connection/methods/clientToServer';
 
 import WelcomeForm from '@components/forms/WelcomeForm';
 
@@ -9,9 +12,17 @@ const Welcome = () => {
   const navigate = useNavigate();
   const newGameRoomId = idv4();
 
-  const handleNext = (name: string) => {
-    navigate(`/${newGameRoomId}`, { state: { userName: name } });
-  };
+  const handleNext = useCallback(
+    (userName: string): void => {
+      navigate(`/${newGameRoomId}`, { state: { userName } });
+      METHOD.joinGameRoom({
+        gameId: newGameRoomId,
+        userName,
+        isCreator: true,
+      });
+    },
+    [newGameRoomId],
+  );
 
   return (
     <div className={styles.welcome}>

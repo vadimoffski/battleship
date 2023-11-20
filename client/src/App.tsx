@@ -1,24 +1,16 @@
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import { ROUTES } from '@utils/constants';
 
 import Layout from '@components/Layout';
-import { ModalsProvider } from '@components/modals/utils/ModalProvider';
-import modals from '@components/modals';
 
 import Home from '@pages/Home';
 import BoardPage from '@pages/BoardPage';
 import Welcome from '@pages/Welcome';
 
-import '@utils/styles/index.scss';
-
-const ROUTES = {
-  home: '/',
-  welcome: 'welcome',
-  board: ':gameId',
-} as const;
-
 const App = () => {
   return (
-    <ModalsProvider initialModals={modals}>
+    <BrowserRouter basename="/battleship">
       <Routes>
         <Route index path={ROUTES.home} element={<Home />} />
         <Route element={<Layout />}>
@@ -26,7 +18,7 @@ const App = () => {
           <Route path={ROUTES.board} element={<BoardPage />} />
         </Route>
       </Routes>
-    </ModalsProvider>
+    </BrowserRouter>
   );
 };
 

@@ -1,0 +1,39 @@
+.tooltip {
+  @apply relative;
+
+  &_tip {
+    @apply absolute left-1/2 z-30 -translate-x-1/2  transform whitespace-nowrap rounded-sm bg-black p-1 text-sm text-white;
+
+    &:before {
+      @apply pointer-events-none absolute left-1/2 ml-[calc(4px*-1)] h-0 w-0 border-4 border-transparent content-[''];
+    }
+  }
+
+  &_tip.top {
+    @apply top-[calc(32px*-1)];
+    &:before {
+      @apply top-full border-t-black;
+    }
+  }
+
+  &_tip.right {
+    @apply left-[calc(100%+5px)] top-1/2 -translate-y-1/2 translate-x-0 transform;
+    &:before {
+      @apply left-[calc(4px*-1)] top-1/2 -translate-y-1/2 translate-x-0 transform border-r-black;
+    }
+  }
+
+  &_tip.bottom {
+    @apply bottom-[calc(30px*-1)];
+    &:before {
+      @apply bottom-full border-b-black;
+    }
+  }
+
+  &_tip.left {
+    @apply left-auto right-[calc(100%+5px)] top-1/2 -translate-y-1/2 translate-x-0 transform;
+    &:before {
+      @apply left-auto right-[calc(4px*-2)] top-1/2 -translate-y-1/2 translate-x-0 border-l-black;
+    }
+  }
+}

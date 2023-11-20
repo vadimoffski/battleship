@@ -1,0 +1,41 @@
+.copyToClipboard {
+  @apply flex w-full flex-row;
+
+  &_input {
+    @apply w-full rounded-l-xl border-2 p-2 text-start text-base;
+  }
+
+  &_button {
+    @apply flex h-full w-20 flex-row items-center justify-center rounded-r-xl border-y-2 border-r-2 p-1 text-white;
+
+    &:hover {
+      background: radial-gradient(
+        231% 135.8% at 0.9% 2.98%,
+        #77699f 0%,
+        #947ab3 52.4%,
+        #a988c3 70.1%,
+        #b991ce 80.52%,
+        #dba6e7 95.62%
+      ) !important;
+      box-shadow:
+        0px 0px 14px 0px #dfbfee,
+        0px 0px 16px 0px #dfbfee,
+        0px 0px 25px 0px #dfbfee;
+    }
+    &:active {
+      background: radial-gradient(
+        231% 135.8% at 0.9% 2.98%,
+        #77699f 0%,
+        #947ab3 52.4%,
+        #a988c3 70.1%,
+        #b991ce 80.52%,
+        #dba6e7 95.62%
+      ) !important;
+      box-shadow: 0px 3px 10px 0px #5c5678 inset;
+    }
+
+    &_icon {
+      @apply h-6 w-6;
+    }
+  }
+}
