@@ -2,10 +2,10 @@ import "module-alias/register";
 import dotenv from "dotenv";
 import express, { Express } from "express";
 import { createServer } from "http";
-import { Server, Socket } from "socket.io";
+import { Server } from "socket.io";
 
 import * as TYPES from "@game/types";
-import * as game from "@game/init";
+import { onConnection } from "@game/listeners";
 
 dotenv.config();
 
@@ -26,10 +26,7 @@ const io = new Server<
   },
 });
 
-io.on("connection", (client: Socket) => {
-  console.log("Connected to the socket.io!");
-  game.initializeGame(io, client);
-});
+io.on("connection", onConnection);
 
 httpServer.listen(port, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${port}`);

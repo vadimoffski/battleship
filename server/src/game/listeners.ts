@@ -1,6 +1,12 @@
 import * as EVENTS from "@game/events";
-import { gameSocket, gamesInSession, io } from "@game/init";
+import { gameSocket, gamesInSession, initializeGame, io } from "@game/init";
 import { SocketData } from "@game/types";
+import { Socket } from "socket.io";
+
+export const onConnection = (client: Socket) => {
+  console.log(`Connected to the socket.io ${client.id}!`);
+  initializeGame(io, client);
+};
 
 export const onDisconnect = () => {
   console.log("Disconnected from the socket.io!");
